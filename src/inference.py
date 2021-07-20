@@ -67,9 +67,9 @@ async def get_cog_tiles_on_zoom(cog: COGReader, zoom: int):
     # print(len(list(tiles)))
 
     for idx, tile in enumerate(tiles):
-        if idx < 50:
-            data = await cog.read(bounds=mercantile.xy_bounds(*tile), shape=(256, 256))
-            yield tile, data
+        # if idx < 50:
+        data = await cog.read(bounds=mercantile.xy_bounds(*tile), shape=(256, 256))
+        yield tile, data
 
 
 def get_image_from_cog_tile(tile):

@@ -6,3 +6,5 @@ Pillow==7.0.0
 min-tfs-client==1.0.2
 aiocogeo
 mercantile
+tensorflow
+geojson
