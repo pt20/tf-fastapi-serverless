@@ -12,6 +12,8 @@ np.set_printoptions(suppress=True)
 model_path = "model/windturbine_floydhub.h5"
 model = tf.keras.models.load_model(model_path)
 
+# https://up42test.s3.amazonaws.com/aus_cogs/aus_id_2.tif
+
 
 def get_tiles_xyz_from_cog(cog: COGReader):
     maxtrix_set = cog.create_tile_matrix_set()
@@ -57,18 +59,22 @@ def get_cog_tile_bounds(x: int, y: int, z: int, cog: COGReader):
 
 
 async def get_cog_tiles_on_zoom(cog: COGReader, zoom: int):
+    print("get_cog_tiles_on_zoom")
     min_x, min_y, max_x, max_y = cog.native_bounds
 
     west, south = mercantile.lnglat(min_x, min_y)
     east, north = mercantile.lnglat(max_x, max_y)
 
     tiles = mercantile.tiles(west, south, east, north, [zoom])
+    print("=" * 20)
+    print(len(list(tiles)))
+    print("=" * 20)
 
-    # print(len(list(tiles)))
-
-    for idx, tile in enumerate(tiles):
+    for tile in tiles:
+        print("what's happening here?")
         # if idx < 50:
         data = await cog.read(bounds=mercantile.xy_bounds(*tile), shape=(256, 256))
+        print("what's happening here?")
         yield tile, data
 
 
@@ -165,3 +171,14 @@ def num2deg(xtile, ytile, zoom):
     lat_rad = math.atan(math.sinh(math.pi * (1 - 2 * ytile / n)))
     lat_deg = math.degrees(lat_rad)
     return [lat_deg, lon_deg]
+
+
+# import asyncio
+
+# async def main():
+#     URL = "https://up42test.s3.amazonaws.com/aus_1_cog.tif"
+#     async with COGReader(URL) as cog:
+#         fc = await save_tiles_for_zoom(cog, 18)
+
+
+# asyncio.run(main())
