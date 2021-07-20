@@ -1,15 +1,10 @@
-import uuid
-
-import cv2
 import uvicorn
-from fastapi import File
-from fastapi import FastAPI
-from fastapi import UploadFile
-import numpy as np
-from PIL import Image
+from aiocogeo import COGReader
+from fastapi import FastAPI, HTTPException
 
+from inference import save_tiles_for_zoom
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 
 @app.get("/")
@@ -17,9 +12,17 @@ def read_root():
     return {"message": "Welcome from the API"}
 
 
-@app.post("/windturbines/{cog}")
-def get_windturbines(cog: str):
-    return {"cog": cog}
+@app.get("/windturbines/cog")
+async def get_windturbines(url: str):
+    print(url)
+    if url == "":
+        raise HTTPException(status_code=400, detail="cog url is needed")
+
+    async with COGReader(url) as cog:
+
+        fc = await save_tiles_for_zoom(cog, 17)
+
+    return fc
 
 
 if __name__ == "__main__":
