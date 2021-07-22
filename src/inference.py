@@ -9,7 +9,7 @@ from geojson import Feature, Point
 from PIL import Image, ImageOps
 
 np.set_printoptions(suppress=True)
-model_path = "tf_model/windturbine_floydhub.h5"
+model_path = "model/windturbine_floydhub.h5"
 model = tf.keras.models.load_model(model_path)
 
 # https://up42test.s3.amazonaws.com/aus_cogs/aus_id_2.tif
