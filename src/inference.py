@@ -113,15 +113,14 @@ async def save_tiles_for_zoom(cog: COGReader, zoom: int, to_file: bool = False):
             image = get_image_from_cog_tile(data)
 
             output = run_model(image)
-            windturbine = True if output[0][0] > 0.5 else False
+            is_windturbine = True if output[0][0] > 0.5 else False
             # other = output[0][1]
 
             coords = num2deg(tile.x, tile.y, tile.z)
 
-            # feat = Point((coords[0], coords[1]))
             feat = Feature(
                 geometry=Point((coords[1], coords[0])),
-                properties={"windtrubine": windturbine},
+                properties={"windtrubine": is_windturbine},
             )
 
             fc.append(feat)
