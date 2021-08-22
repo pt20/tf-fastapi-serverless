@@ -1,10 +1,10 @@
-uvicorn==0.13.4
+aiocogeo
 fastapi==0.63.0
-python-multipart==0.0.5
+geojson
+mercantile
+min-tfs-client==1.0.2
 numpy~=1.19.5
 Pillow==7.0.0
-min-tfs-client==1.0.2
-aiocogeo
-mercantile
-tensorflow
-geojson
+python-multipart==0.0.5
+tensorflow==2.4.1
+uvicorn==0.13.4
