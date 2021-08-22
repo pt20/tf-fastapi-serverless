@@ -13,6 +13,7 @@ repos:
     hooks:
       - id: isort
         language_version: python3.8
+        args: ["--profile", "black"]
 
   - repo: https://github.com/psf/black
     rev: 20.8b1
@@ -26,3 +27,4 @@ repos:
     hooks:
       - id: flake8
         language_version: python3.8
+        args: ['--ignore=E501,E266']
