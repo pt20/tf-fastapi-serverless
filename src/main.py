@@ -1,5 +1,6 @@
 import uvicorn
-from aiocogeo import COGReader
+
+# from aiocogeo import COGReader
 from fastapi import FastAPI, HTTPException
 
 from response_models import MlModelsConfig
