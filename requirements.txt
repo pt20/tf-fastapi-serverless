@@ -1,6 +1,7 @@
 aiocogeo
 fastapi==0.63.0
 geojson
+geojson-pydantic==0.3.1
 mercantile
 min-tfs-client==1.0.2
 numpy~=1.19.5
