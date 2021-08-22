@@ -12,7 +12,3 @@ def load_ml_config() -> MlModelsConfig:
         ml_config = yaml.safe_load(stream)
 
     return MlModelsConfig(**ml_config)
-
-
-myconf = load_ml_config()
-
