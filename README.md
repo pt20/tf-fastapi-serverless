@@ -10,18 +10,20 @@ cd tf-fastapi-serverless
 ./get_started.sh
 ```
 
-## spinning up the server
+## spinning up the services
+
+Make sure to have docker installed on your system
 
 ```bash
-python src/main.py
+docker-compose up --build
 ```
 
 ## testing the endpoint
 
-Go to your browser at `http://0.0.0.0:8080` and you should see
+Go to your browser at `http://0.0.0.0:8004` and you should see
 
 ```python
-{"message": "Welcome from the API"}
+{"message": "Sometimes the wheel turns slowly, but it turns."}
 ```
 
-Go to `http://localhost:8080/windturbines/cog?url=https://up42test.s3.amazonaws.com/aus_cogs/aus_id_2.tif` and wait for some time until you get a geojson feature collection as a response.
+`http://0.0.0.0:8004/docs` will take you to interactive API documentation. You can try the endpoints from there as well.
