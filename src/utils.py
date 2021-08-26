@@ -1,8 +1,9 @@
 import os
 
 import yaml
+from fastapi.exceptions import HTTPException
 
-from response_models import MlModelsConfig
+from src.pydantic_models import MlModelsConfig
 
 file_path = os.path.join(os.path.dirname(__file__), "ml-config.yaml")
 
@@ -12,3 +13,13 @@ def load_ml_config() -> MlModelsConfig:
         ml_config = yaml.safe_load(stream)
 
     return MlModelsConfig(**ml_config)
+
+
+def validate_model_by_id(model_id):
+    available_models = load_ml_config()
+    ids = [model.id for model in available_models.models]
+
+    if model_id not in ids:
+        raise HTTPException(404, detail="Model not found")
+
+    return available_models
