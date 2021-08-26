@@ -1,6 +1,7 @@
 import os
 
 import yaml
+from fastapi import status
 from fastapi.exceptions import HTTPException
 
 from src.pydantic_models import MlModelsConfig
@@ -38,6 +39,6 @@ def validate_model_by_id(model_id: int) -> MlModelsConfig:
     ids = [model.id for model in available_models.models]
 
     if model_id not in ids:
-        raise HTTPException(404, detail="Model not found")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Model not found")
 
     return available_models
