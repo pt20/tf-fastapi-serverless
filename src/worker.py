@@ -9,6 +9,8 @@ celery.conf.result_backend = os.environ.get(
     "CELERY_RESULT_BACKEND", "redis://localhost:6379"
 )
 
+## TODO: Bring prediction business here
+
 
 @celery.task(name="create_task")
 def create_task(task_type):
