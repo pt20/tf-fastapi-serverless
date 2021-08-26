@@ -1,5 +1,4 @@
 import geojson
-import uvicorn
 from celery.result import AsyncResult
 from fastapi import FastAPI, HTTPException, status
 from fastapi.responses import JSONResponse
@@ -78,7 +77,3 @@ def get_prediction_status(prediction_task_id):
         "task_result": fc.dict(),
     }
     return JSONResponse(result)
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000)
