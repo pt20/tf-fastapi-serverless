@@ -9,14 +9,14 @@ from src.pydantic_models import MlModelsConfig
 file_path = os.path.join(os.path.dirname(__file__), "ml-config.yaml")
 
 
-def load_ml_config() -> MlModelsConfig:
+def load_ml_config(cfg_file: str = file_path) -> MlModelsConfig:
     """
     loads the model yaml config file into pydantic model
 
     Returns:
         MlModelsConfig: Pydantic model corresponding to model metadata
     """
-    with open(file_path, "r") as stream:
+    with open(cfg_file, "r") as stream:
         ml_config = yaml.safe_load(stream)
 
     return MlModelsConfig(**ml_config)
