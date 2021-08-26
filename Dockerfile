@@ -12,8 +12,5 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-# RUN mkdir -p /usr/src/app/logs
-# RUN touch /usr/src/app/logs/celery.log
-
 # copy project
 COPY . .
