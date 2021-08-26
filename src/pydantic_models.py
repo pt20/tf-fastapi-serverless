@@ -19,5 +19,5 @@ class MlModelsConfig(BaseModel):
 
 
 class LaunchPredictionPayload(BaseModel):
-    model_id: str
+    model_id: int
     aoi: Feature
