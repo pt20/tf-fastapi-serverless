@@ -68,12 +68,14 @@ def launch_prediction(payload: LaunchPredictionPayload):
 def get_prediction_status(prediction_task_id):
     task_result = AsyncResult(prediction_task_id)
 
-    ## TODO: remove this later - only for testing the response
+    ## TODO: remove this later - only to ensure the desired response
     random_poly = geojson.utils.generate_random("Polygon")
+    fc = FeatureCollection(features=[Feature(geometry=random_poly)])
+
     result = {
         "task_id": prediction_task_id,
         "task_status": task_result.status,
-        "task_result": FeatureCollection(features=[Feature(geomery=random_poly)]),
+        "task_result": fc.dict(),
     }
     return JSONResponse(result)
 
