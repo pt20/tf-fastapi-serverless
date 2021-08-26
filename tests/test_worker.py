@@ -1,3 +1,4 @@
+# pylint: disable=missing-module-docstring,missing-function-docstring,unused-argument
 from unittest.mock import patch
 
 from src.worker import create_task
