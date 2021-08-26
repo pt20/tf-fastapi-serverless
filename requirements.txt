@@ -1,11 +1,17 @@
 aiocogeo
+aiofiles==0.6.0
+celery==4.4.7
 fastapi==0.63.0
+flower==0.9.7
 geojson
 geojson-pydantic==0.3.1
 mercantile
 min-tfs-client==1.0.2
 numpy~=1.19.5
 Pillow==7.0.0
+pytest==6.2.4
 python-multipart==0.0.5
+redis==3.5.3
+requests==2.25.1
 tensorflow==2.4.1
 uvicorn==0.13.4
