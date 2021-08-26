@@ -4,5 +4,5 @@ models:
     prediction_type: "classification"
     learning_approach: "supervised"
     architecture: "awesome-cnn"
-    description: "classifies a windturbine in a given AOI. The model is trained using 3 band RGB NAIP imagery over US"
+    description: "That rug really tied the room together"
     gsd_per_pixel: "1 meter"
