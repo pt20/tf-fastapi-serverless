@@ -27,4 +27,9 @@ repos:
     hooks:
       - id: flake8
         language_version: python3.8
-        args: ['--ignore=E501,E266']
+        args: ["--ignore=E501,E266"]
+
+  - repo: https://github.com/hadialqattan/pycln
+    rev: v1.0.3
+    hooks:
+      - id: pycln
