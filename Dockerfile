@@ -1,4 +1,4 @@
-FROM python:3.8.11-slim-buster
+FROM python:3.8-slim-buster
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
