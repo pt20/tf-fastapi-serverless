@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "tf-fastapi-serverless"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+aiocogeo = "^0.3.0"
+aiofiles = "0.6.0"
+celery = "4.4.7"
+fastapi = "0.63.0"
+flower = "0.9.7"
+geojson = "^2.5.0"
+mercantile = "^1.2.1"
+numpy = "~=1.19.5"
+Pillow = "7.0.0"
+python-multipart = "0.0.5"
+pyyaml = "5.4.1"
+redis = "3.5.3"
+requests = "2.25.1"
+tensorflow = "2.4.1"
+uvicorn = "0.13.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "6.2.4"
+pytest-cov = "2.12.1"
+pytest-flake8 = "1.0.7"
+pytest-mypy = "0.8.1"
+pytest-pylint = "0.18.0"
+pre-commit = "^2.14.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
