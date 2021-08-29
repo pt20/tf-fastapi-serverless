@@ -1,0 +1,8 @@
+models:
+  - name: blah
+    id: 1
+    prediction_type: "classification"
+    learning_approach: "supervised"
+    architecture: "awesome-cnn"
+    description: "That rug really tied the room together"
+    gsd_per_pixel: "1 meter"

@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+from geojson_pydantic.features import Feature
 from pydantic import BaseModel
 
 
@@ -15,3 +16,8 @@ class ModelMetadata(BaseModel):
 
 class MlModelsConfig(BaseModel):
     models: List[ModelMetadata]
+
+
+class LaunchPredictionPayload(BaseModel):
+    model_id: int
+    aoi: Feature
