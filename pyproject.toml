@@ -21,6 +21,8 @@ redis = "3.5.3"
 requests = "2.25.1"
 tensorflow = "2.4.1"
 uvicorn = "0.13.4"
+rio-tiler = "^2.1.2"
+Shapely = "^1.7.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "6.2.4"

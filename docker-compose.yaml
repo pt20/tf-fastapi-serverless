@@ -10,7 +10,7 @@ services:
       - 8004:8000
     command: uvicorn src.main:app --host 0.0.0.0 --reload
     volumes:
-      - .:/usr/src/app
+      - .:/app
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
@@ -21,9 +21,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: celery worker --app=src.worker.celery --loglevel=info --logfile=logs/celery.log
+    command: celery worker --app=src.worker.celery --loglevel=info --logfile=logs/celery.log --pool=threads
     volumes:
-      - .:/usr/src/app
+      - .:/app
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
