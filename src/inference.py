@@ -114,10 +114,3 @@ def run_prediction_for_aoi(aoi: Dict, tif_uri: str = tif_uri) -> FeatureCollecti
                 fc.append(feat)
 
     return FeatureCollection(features=fc)
-
-
-# import geojson
-
-# fc = run_prediction_for_aoi()
-# with open("model/bleh.geojson", "w") as fp:
-#     geojson.dump(fc.dict(), fp)
