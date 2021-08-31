@@ -21,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: celery worker --app=src.worker.celery --loglevel=info --logfile=logs/celery.log
+    command: celery worker --app=src.worker.celery --loglevel=info --logfile=logs/celery.log --pool=threads
     volumes:
       - .:/app
     environment:
