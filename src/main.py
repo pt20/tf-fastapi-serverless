@@ -7,31 +7,13 @@ from src.pydantic_models import LaunchPredictionPayload, MlModelsConfig
 from src.utils import load_ml_config, validate_model_by_id
 from src.worker import create_task
 
-# from aiocogeo import COGReader
-
-
+tif_uri = "https://naipeuwest.blob.core.windows.net/naip/v002/ut/2011/ut_100cm_2011/40111/m_4011125_sw_12_1_20110720.tif"
 app = FastAPI(debug=True)
 
 
 @app.get("/")
 def read_root():
     return {"message": "Sometimes the wheel turns slowly, but it turns."}
-
-
-## deprecated in favour of AOI
-# @app.get("/windturbines/cog")
-# async def get_windturbines(url: str):
-#     if url == "":
-#         raise HTTPException(status_code=400, detail="cog url is required")
-
-#     async with COGReader(url) as cog:
-
-#         fc = await save_tiles_for_zoom(cog, 17)
-
-#     return fc
-
-# tif_uri = "https://naipeuwest.blob.core.windows.net/naip/v002/ut/2011/ut_100cm_2011/40111/m_4011125_sw_12_1_20110720.tif"
-tif_uri = "model/m_4011125_sw_12_1_20110720.tif"
 
 
 @app.get("/models")
@@ -59,7 +41,6 @@ def launch_prediction(payload: LaunchPredictionPayload):
             detail="Currently only single feature of type Polygon supported",
         )
 
-    # task_type = 2
     task = create_task.delay(geom.dict(), tif_uri)
     return JSONResponse({"prediction_task_id": task.id})
 
